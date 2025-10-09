@@ -29,13 +29,15 @@ jobs:
           docker buildx build --platform linux/amd64 -t medilab:v1 -f Medilab/Dockerfile Medilab --push
           docker tag medilab:v1 161805283818.dkr.ecr.us-east-1.amazonaws.com/medilab:v1
           docker push 161805283818.dkr.ecr.us-east-1.amazonaws.com/medilab:v1
-  deploy:  
-  runs-on: ubuntu-latest
-  needs: build-push
-  steps:
-    - name: Check ssh key
-      run: |
-    echo "${{ secrets.SSH_KEY }}" > ssh_key.pem
-    chmod 600 ssh_key.pem
-    cat ssh_key.pem
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-push
+    steps:
+      - name: Check ssh key
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > ssh_key.pem
+          chmod 600 ssh_key.pem
+          cat ssh_key.pem
       

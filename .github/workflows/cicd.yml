@@ -26,6 +26,6 @@ jobs:
 
       - name: Build and Push Docker Image to ECR
         run: |
-          docker build -t medilab:v1 .
+          docker build -t medilab:v1 -f Medilab_new/Dockerfile Medilab_new/to/
           docker tag medilab:v1 161805283818.dkr.ecr.us-east-1.amazonaws.com/medilab:v1
           docker push 161805283818.dkr.ecr.us-east-1.amazonaws.com/medilab:v1

@@ -43,10 +43,10 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" > ssh_key.pem
           chmod 600 ssh_key.pem
           cat ssh_key.pem
-          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@3.84.100.219 "docker ps"
+          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@3.84.100.219 "docker pull 161805283818.dkr.ecr.us-east-1.amazonaws.com/medilab:v2"
 
           
-          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@3.84.100.219 "hostnamectl"
+          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@3.84.100.219 "docker run -d -p 80:80 161805283818.dkr.ecr.us-east-1.amazonaws.com/medilab:v2"
 
 
           
